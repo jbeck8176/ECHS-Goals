@@ -160,24 +160,31 @@
                     <!-- This is where the goals are dynamically generated -->
                     <script>
                         const goals = [
-                            "Force 3 Turnovers",
-                            "3 Sacks",
-                            "5 Tackles for a Loss",
-                            "4 Yards or Less per Carry",
-                            "Completion Percentage under 50%",
-                            "No Big Plays (15 run / 20 pass)",
-                            "3rd Down Conversion < 40%",
-                            "4th Down Conversion 0%",
-                            "Allow 14 or Less Points",
-                            "Wolfpack: Rally After a Turnover",
-                            "Goal Line Stand",
-                            "Score"
+                            {id:0, name:"Force 3 Turnovers"},
+                            {id:1, name:"3 Sacks"},
+                            {id:2, name:"5 Tackles for a Loss"},
+                            {id:3, name:"4 Yards or Less per Carry"},
+                            {id:4, name:"Completion Percentage under 50%"},
+                            {id:5, name:"No Big Plays (15 run / 20 pass)"},
+                            {id:6, name:"3rd Down Conversion < 40%"},
+                            {id:7, name:"4th Down Conversion 0%"},
+                            {id:8, name:"Allow 14 or Less Points"},
+                            {id:9, name:"Wolfpack: Rally After a Turnover"},
+                            {id:10, name:"Goal Line Stand"},
+                            {id:11, name:"Score"}
                         ];
 
                         const teams = [
-                            "Chippewa", "Wellsville", "Sandy Valley", "St.Thomas", 
-                            "Ridgewood", "Newcommerstown", "Strasburg", "TCC", 
-                            "Buckeye Trail", "MALVERN"
+                            {name:"Chippewa", goals:[1,0,1,0,1,1,1,0,1,1,0,1]}, 
+                            {name:"Wellsville", goals:[0,0,0,0,0,0,0,0,0,0,0,0]}, 
+                            {name:"Sandy Valley", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"St.Thomas", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"Ridgewood", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"Newcommerstown", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"Strasburg", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"TCC", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"Buckeye Trail", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"MALVERN", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
                         ];
 
                         const tableBody = document.querySelector('tbody');
@@ -188,15 +195,20 @@
                             
                             // Goal cell
                             let goalCellClass = 'p-3 text-left font-bold';
-                            if (goal === "Win") {
+                            if (goal.name === "Win") {
                                 goalCellClass += ' bg-yellow-600 bg-opacity-20 text-yellow-300';
                             }
-                            row.innerHTML = `<td class="${goalCellClass}">${goal}</td>`;
+                            row.innerHTML = `<td class="${goalCellClass}">${goal.name}</td>`;
 
                             // Team checkbox cells
                             teams.forEach(team => {
                                 const cell = document.createElement('td');
                                 cell.className = 'p-2 align-middle';
+                                if(team.goals[goal.id] === 1) {
+                                    cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox" checked></div>`;
+                                } else {
+                                    cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox"></div>`;
+                                }
                                 cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox"></div>`;
                                 row.appendChild(cell);
                             });
