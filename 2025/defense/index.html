@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensive Goal Chart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the grunge theme */
+        body {
+            font-family: 'Special Elite', cursive;
+            background-color: #1e3a8a; /* Dark Blue */
+            /* Grunge texture from an external source */
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall-3.png');
+            color: #e0f2fe; /* Light blue text for contrast */
+        }
+
+        .font-header {
+            font-family: 'Black Ops One', cursive;
+        }
+
+        /* Custom checkbox styling */
+        .goal-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            height: 35px;
+            width: 35px;
+            background-color: rgba(23, 37, 84, 0.6); /* Darker blue */
+            border: 2px solid #3b82f6; /* Brighter blue border */
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .goal-checkbox:hover {
+            background-color: rgba(30, 64, 175, 0.6);
+        }
+
+        .goal-checkbox:checked {
+            background-color: #fbbf24; /* Gold color from the logo */
+            border-color: #fde047;
+        }
+
+        .goal-checkbox:checked::after {
+            /* Using the hornet logo as the checkmark */
+            content: '';
+            display: block;
+            width: 28px;
+            height: 28px;
+            background-image: url('http://googleusercontent.com/file_content/0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Custom table styles for a grunge look */
+        .grunge-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 4px solid #1d4ed8; /* Strong blue border */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        .grunge-table th, .grunge-table td {
+            border: 1px solid #2563eb; /* Blue cell borders */
+            transition: background-color 0.3s;
+        }
+        
+        .grunge-table tbody tr:hover {
+            background-color: rgba(251, 191, 36, 0.15); /* Gold hover effect */
+        }
+
+        .team-header {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-blue-900 p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <img src="http://googleusercontent.com/file_content/0" alt="Havoc Logo" class="mx-auto h-32 w-32 drop-shadow-lg" onerror="this.style.display='none'">
+            <h1 class="font-header text-4xl sm:text-5xl md:text-6xl text-yellow-400 uppercase tracking-widest text-shadow-lg">Defensive Goals</h1>
+            <p class="text-blue-200 text-lg mt-2">Hornet Defense - 2025</p>
+        </header>
+
+        <!-- Goal Chart Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-center grunge-table">
+                <thead class="bg-blue-800 bg-opacity-50 text-yellow-400 text-sm sm:text-base">
+                    <tr>
+                        <th class="p-3 font-header text-lg w-1/4 min-w-[200px]">GOAL</th>
+                        <!-- Team Headers -->
+                        <th class="p-2"><div class="team-header font-header">Chippewa</div></th>
+                        <th class="p-2"><div class="team-header font-header">Wellsville</div></th>
+                        <th class="p-2"><div class="team-header font-header">Sandy Valley</div></th>
+                        <th class="p-2"><div class="team-header font-header">St.Thomas</div></th>
+                        <th class="p-2"><div class="team-header font-header">Ridgewood</div></th>
+                        <th class="p-2"><div class="team-header font-header">Newcommerstown</div></th>
+                        <th class="p-2"><div class="team-header font-header">Strasburg</div></th>
+                        <th class="p-2"><div class="team-header font-header">TCC</div></th>
+                        <th class="p-2"><div class="team-header font-header">Buckeye Trail</div></th>
+                        <th class="p-2"><div class="team-header font-header">MALVERN</div></th>
+                    </tr>
+                </thead>
+                <tbody class="bg-blue-900 bg-opacity-75 text-blue-100 text-sm sm:text-base">
+                    <!-- This is where the goals are dynamically generated -->
+                    <script>
+                        const goals = [
+                            "Force 3 Turnovers",
+                            "3 Sacks",
+                            "5 Tackles for a Loss",
+                            "4 Yards or Less per Carry",
+                            "Completion Percentage under 50%",
+                            "No Big Plays (15 run / 20 pass)",
+                            "3rd Down Conversion < 40%",
+                            "4th Down Conversion 0%",
+                            "Allow 14 or Less Points",
+                            "Wolfpack: Rally After a Turnover",
+                            "Goal Line Stand",
+                            "Win"
+                        ];
+
+                        const teams = [
+                            "Chippewa", "Wellsville", "Sandy Valley", "St.Thomas", 
+                            "Ridgewood", "Newcommerstown", "Strasburg", "TCC", 
+                            "Buckeye Trail", "MALVERN"
+                        ];
+
+                        const tableBody = document.querySelector('tbody');
+                        
+                        goals.forEach(goal => {
+                            const row = document.createElement('tr');
+                            row.className = 'transition-colors duration-300';
+                            
+                            // Goal cell
+                            let goalCellClass = 'p-3 text-left font-bold';
+                            if (goal === "Win") {
+                                goalCellClass += ' bg-yellow-600 bg-opacity-20 text-yellow-300';
+                            }
+                            row.innerHTML = `<td class="${goalCellClass}">${goal}</td>`;
+
+                            // Team checkbox cells
+                            teams.forEach(team => {
+                                const cell = document.createElement('td');
+                                cell.className = 'p-2 align-middle';
+                                cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox"></div>`;
+                                row.appendChild(cell);
+                            });
+
+                            tableBody.appendChild(row);
+                        });
+                    </script>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+</body>
+</html>
