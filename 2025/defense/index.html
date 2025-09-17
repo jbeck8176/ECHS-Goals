@@ -207,9 +207,9 @@
                                 const cell = document.createElement('td');
                                 cell.className = 'p-2 align-middle';
                                 if(team.goals[goal.id] === 1) {
-                                    cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox" checked></div>`;
+                                    cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox" checked disabled></div>`;
                                 } else {
-                                    cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox"></div>`;
+                                    cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox" disabled></div>`;
                                 }
                                 //cell.innerHTML = `<div class="flex justify-center items-center"><input type="checkbox" class="goal-checkbox"></div>`;
                                 row.appendChild(cell);
