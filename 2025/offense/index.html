@@ -156,31 +156,26 @@
                 <tbody class="bg-yellow-200 bg-opacity-75 text-navy-900 text-sm sm:text-base">
                     <script>
                         const goals = [
-                            {id:0, name:"Force 3 Turnovers"},
-                            {id:1, name:"3 Sacks"},
-                            {id:2, name:"5 Tackles for a Loss"},
-                            {id:3, name:"4 Yards or Less per Carry"},
-                            {id:4, name:"Completion Percentage under 50%"},
-                            {id:5, name:"No Big Plays (15 run / 20 pass)"},
-                            {id:6, name:"3rd Down Conversion < 40%"},
-                            {id:7, name:"4th Down Conversion 0%"},
-                            {id:8, name:"Allow 14 or Less Points"},
-                            {id:9, name:"Wolfpack: Rally After a Turnover"},
-                            {id:10, name:"Goal Line Stand"},
-                            {id:11, name:"Score"}
+                            {id:0, name:"3 Touchdowns"},
+                            {id:1, name:"300 yards Total Offense"},
+                            {id:2, name:"100% Red Zone Efficiency"},
+                            {id:3, name:"0 turnovers"},
+                            {id:4, name:"3rd Down Conversion > 75%"},
+                            {id:5, name:"Big Play > 20 yards"},
+                            {id:6, name:"12 First Downs"}
                         ];
 
                         const teams = [
-                            {name:"Chippewa", goals:[1,0,1,0,1,1,1,0,1,1,0,1]}, 
-                            {name:"Wellsville", goals:[1,0,1,0,1,1,1,0,1,1,0,1]}, 
-                            {name:"Sandy Valley", goals:[0,0,0,0,0,0,0,0,0,1,1,1]},
-                            {name:"St.Thomas", goals:[1,1,1,1,1,1,1,1,1,1,0,1]},
-                            {name:"Ridgewood", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
-                            {name:"Newcommerstown", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
-                            {name:"Strasburg", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
-                            {name:"TCC", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
-                            {name:"Buckeye Trail", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
-                            {name:"MALVERN", goals:[0,0,0,0,0,0,0,0,0,0,0,0]},
+                            {name:"Chippewa", goals:[1,0,1,1,0,1,0]}, 
+                            {name:"Wellsville", goals:[1,0,1,0,1,1,1]}, 
+                            {name:"Sandy Valley", goals:[1,1,1,0,0,1,1]},
+                            {name:"St.Thomas", goals:[0,0,0,0,0,0,0]},
+                            {name:"Ridgewood", goals:[0,0,0,0,0,0,0]},
+                            {name:"Newcommerstown", goals:[0,0,0,0,0,0,0]},
+                            {name:"Strasburg", goals:[0,0,0,0,0,0,0]},
+                            {name:"TCC", goals:[0,0,0,0,0,0,0]},
+                            {name:"Buckeye Trail", goals:[0,0,0,0,0,0,0]},
+                            {name:"MALVERN", goals:[0,0,0,0,0,0,0]},
                         ];
 
                         const tableBody = document.querySelector('tbody');
